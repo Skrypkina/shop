@@ -171,3 +171,87 @@
 .num3 {
   background-image: url("../images/seafood\ \(1\).jpg");
 }
+
+// TASKS
+
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}
+
+// 4
+
+#boxes div {
+  // width: 30px;
+  height: 30px;
+  // background-color: green;
+  border: 1px solid #ffffff;
+}
+// nav - delegation
+.active {
+  background-color: brown;
+  color: #ffffff;
+}
+.nav {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-item:not(:last-child) {
+  margin-right: 20px;
+}
+// todo list
+
+.editor,
+.todo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.editor-input {
+  padding-left: 20px;
+  flex-grow: 2;
+  height: 40px;
+  border: 1px solid #ececec;
+}
+.todo-text {
+  padding-left: 20px;
+  width: 300px;
+  height: 40px;
+  border: 1px solid #ececec;
+}
+.editor-submit,
+.btn {
+  padding: 12px 20px;
+  border-radius: 4px;
+  background-color: darkblue;
+  color: #ffffff;
+  text-align: center;
+}
+
+.todo {
+  display: flex;
+  box-shadow: 0px 1px 2px -2px rgba(0, 0, 0, 0.16);
+}
+h4 {
+  text-align: center;
+  font-size: 18px;
+  color: cornflowerblue;
+  margin-bottom: 20px;
+}
+.todo-list {
+  flex-direction: column;
+}
+.group-active {
+  background-color: #f44336;
+}

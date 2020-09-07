@@ -1196,3 +1196,676 @@ function addFive(num) {
 const addAll = addFive(5);
 
 console.log(addAll(2));
+
+// find the biggest world
+
+const findLongestWord = function (string) {
+  const array = string.split(" ");
+  let word = array[0];
+  for (const arr of array) {
+    if (arr.length > word.length) {
+      word = arr;
+    }
+  }
+
+  return word;
+};
+
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
+
+//=====================
+/*
+Напиши функцию formatString(string) которая принимает строку и форматирует ее если необходимо.
+
+Если длина строки не превышает 40 символов, функция возвращает ее в исходном виде.
+Если длина больше 40 символов, то функция обрезает строку до 40-ка символов и добавляет 
+в конец строки троеточие '...', после чего возвращает укороченную версию.
+*/
+const formatString = function (string) {
+  // const subString = string.slice(0, 40);
+  if (string.length > 40) {
+    return string.slice(0, 40) + "...";
+  } else {
+    return string;
+  }
+};
+
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(formatString("Curabitur ligula sapien, tincidunt non."));
+// вернется оригинальная строка
+
+console.log(formatString("Vestibulum facilisis, purus nec pulvinar iaculis."));
+// вернется форматированная строка
+
+console.log(formatString("Curabitur ligula sapien."));
+// вернется оригинальная строка
+
+console.log(
+  formatString(
+    "Nunc sed turpis. Curabitur a felis in nunc fringilla tristique."
+  )
+);
+// вернется форматированная строка
+
+//==========================================================
+const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
+
+// const isLoginValid = function (login) {
+//   const length = login.length;
+//   if (length >= 4 && length <= 16) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// const isLoginUnique = function (allLogins, login) {
+//   if (allLogins.includes(login)) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// };
+
+// const addLogin = function (allLogins, login) {
+//   const num = isLoginValid(login);
+//   const log = isLoginUnique(allLogins, login);
+//   if (!num) {
+//     console.log("Ошибка! Логин должен быть от 4 до 16 символов");
+//     return;
+//   }
+//   if (!log) {
+//     console.log("Такой логин уже используется!");
+//     return;
+//   }
+//   logins.push(login);
+//   console.log("yes");
+//   return logins;
+// };
+
+// console.log(logins);
+// /*
+//  * Вызовы функции для проверки работоспособности твоей реализации.
+//  */
+// console.log(addLogin(logins, "Ajax")); // 'Логин успешно добавлен!'
+// console.log(addLogin(logins, "robotGoogles")); // 'Такой логин уже используется!'
+// console.log(addLogin(logins, "Zod")); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+// console.log(addLogin(logins, "jqueryisextremelyfast")); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+/*
+предикатная функция возарвщает true ore false
+втроенные в язык предикатные функции
+Array.isArray;
+Number.isNaN;
+Number.isInteger;
+*/
+
+//===================
+// const findBestEmployee = function (employees) {
+//   const array = Object.values(employees);
+//   let biggestSalary = array[0];
+//   let employee;
+//   for (const elem of array) {
+//     if (elem > biggestSalary) {
+//       biggestSalary = elem;
+//     }
+//   }
+//   for (let elem in employees) {
+//     if (employees[elem] === biggestSalary) {
+//       employee = elem;
+//     }
+//   }
+//   return employee;
+// };
+
+// /*
+//  * Вызовы функции для проверки работоспособности твоей реализации.
+//  */
+// console.log(
+//   findBestEmployee({
+//     ann: 29,
+//     david: 35,
+//     helen: 1,
+//     lorence: 99,
+//   })
+// ); // lorence
+
+// console.log(
+//   findBestEmployee({
+//     poly: 12,
+//     mango: 17,
+//     ajax: 4,
+//   })
+// ); // mango
+
+// console.log(
+//   findBestEmployee({
+//     lux: 147,
+//     david: 21,
+//     kiwi: 19,
+//     chelsy: 38,
+//   })
+// ); // lux
+
+//=====================
+/*
+Напиши функцию getAllPropValues(arr, prop), которая получает массив объектов и имя свойства. 
+Возвращает массив значений определенного свойства prop из каждого объекта в массиве.
+*/
+// const products = [
+//   { name: "Радар", price: 1300, quantity: 4 },
+//   { name: "Сканер", price: 2700, quantity: 3 },
+//   { name: "Дроид", price: 400, quantity: 7 },
+//   { name: "Захват", price: 1200, quantity: 2 },
+// ];
+
+// const getAllPropValues = function (arr, prop) {
+//   const values = [];
+//   for (const elem of arr) {
+//     for (let item in elem) {
+//       if (item === prop) {
+//         values.push(elem[item]);
+//       }
+//     }
+//   }
+//   return values;
+// };
+
+// /*
+//  * Вызовы функции для проверки работоспособности твоей реализации.
+//  */
+// console.log(getAllPropValues(products, "name")); // ['Радар', 'Сканер', 'Дроид', 'Захват']
+
+// console.log(getAllPropValues(products, "quantity")); // [4, 3, 7, 2]
+
+// console.log(getAllPropValues(products, "category")); // []
+//=========================================
+
+const userss = [
+  {
+    id: "701b29c3-b35d-4cf1-a5f6-8b12b29a5081",
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    skills: ["ipsum", "lorem"],
+    gender: "male",
+    age: 37,
+  },
+  {
+    id: "7a3cbd18-57a1-4534-8e12-1caad921bda1",
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+    gender: "female",
+    age: 34,
+  },
+  {
+    id: "88beb2f3-e4c2-49f3-a0a0-ecf957a95af3",
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    skills: ["nulla", "anim", "proident", "ipsum", "elit"],
+    gender: "male",
+    age: 24,
+  },
+  {
+    id: "249b6175-5c30-44c6-b154-f120923736f5",
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    skills: ["adipisicing", "irure", "velit"],
+    gender: "female",
+    age: 21,
+  },
+  {
+    id: "334f8cb3-eb04-45e6-abf4-4935dd439b70",
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    skills: ["ex", "culpa", "nostrud"],
+    gender: "male",
+    age: 27,
+  },
+  {
+    id: "150b00fb-dd82-427d-9faf-2879ea87c695",
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    skills: ["non", "amet", "ipsum"],
+    gender: "male",
+    age: 38,
+  },
+  {
+    id: "e1bf46ab-7168-491e-925e-f01e21394812",
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    skills: ["lorem", "veniam", "culpa"],
+    gender: "female",
+    age: 39,
+  },
+];
+
+//Массив имен всех пользователей у которых есть друг с указанным именем.
+
+// const getUsersWithFriend = (users, friendName) =>
+//   users.filter((user) => user.friends.includes(friendName));
+
+// console.log(getUsersWithFriend(userss, "Briana Decker")); // [ 'Sharlene Bush', 'Sheree Anthony' ]
+// console.log(getUsersWithFriend(userss, "Goldie Gentry")); // [ 'Elma Head', 'Sheree Anthony' ]
+
+//Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
+
+// const getNamesSortedByFriendsCount = (users) =>
+//   users
+//     .sort((prev, next) => prev.friends.length - next.friends.length)
+//     .map((user) => user.name);
+
+// console.log(getNamesSortedByFriendsCount(userss));
+// // [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]//
+
+//Получить массив всех умений всех пользователей (поле skills), при этом не должно быть повторяющихся умений и они должны быть отсортированы в алфавитном порядке.
+
+// const getSortedUniqueSkills = (users) => {
+//   const skills = users.map((user) => user.skills);
+//   const filtered = [];
+
+//   skills.forEach((skill) => {
+//     skill.forEach((elem) => {
+//       if (!filtered.includes(elem)) {
+//         filtered.push(elem);
+//       }
+//     });
+//   });
+//   return filtered.sort();
+// };
+
+// console.log(getSortedUniqueSkills(userss));
+// // //[ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
+
+// Событие фокус не всплывает, focus - поле в фокусе, blur - когда фокус ушел
+// Событие change отслеживает изменения в поле. Событие происходит не во время печатания,
+//а когда мы фокус убираем. Это не очень удобно
+// чтобы сразу поучать то, что юзер ввел - событие input. evt.currentTarget.value
+// current target - узел, где повешен event listener
+//target - узел, где произошло событие
+
+//собирать поля с формы
+// свойство elements - это псевдлмассив, где хранятся все элементы формы
+// в том порядке, в котором они в интерфейсе стоят - коллекция всех интерактивных эл-тов
+//так же в нем есть свойства по атрибуту name
+/*
+const {elements} = event.currentTarget;
+const nameInput = elements.name;
+const emailInput = elements.email;
+const passwordInput = elements.password;
+//это ссылки на наши элементы
+//у каждого инпута есть свойство name(атрибут name) и свойство value - его значение
+
+const data = {
+  [nameInput.name]: nameInput.value,
+  [emailInput.name]: emailInput.value,
+  [passwordInput.name]: passwordInput.value,
+  subscriptionValue
+}
+data - объект с собранными данными
+
+//выбор checkboxes
+//браузер в elements кидает свойство с именем группы checkboxes(атрибут name) и
+// еще браузер записывает текущий value
+// напртмер у всех checkboxes name = "subscription" 1- free, 2-basic, 3- pro
+//выбираем basic и сабмитим
+в elements.subscription.value будет basic;
+const subscriptionValue = form.elements.subscription.value;
+Ни в коем случае не выбирать все querySelector
+*/
+
+// БЫСТРО СОБРАТЬ ФОРМУ
+
+/*
+function handleSubmitWithFormData(evt) {
+  evt.preventDefault();
+  //constructor formData - собирает все за нас
+  const formData = new formData(event.currentTarget); - она пустая
+  const data = {}
+  for(const entry of formData.entries()) {
+    console.log(entry); - в виде массивов - неудобно
+
+    // formData.forEach((name, value) => {
+      data[name] = value;
+    }) - получаем тот же самый объект
+  }
+}
+*/
+
+//keyPress - для обычных клавиш
+// keyDown && keyUp - для служебных
+// например при закрытии модалки слушается кнопка escape на keydown.
+
+// tasks======================
+
+// const ingredients = [
+//   "Картошка",
+//   "Грибы",
+//   "Чеснок",
+//   "Помидоры",
+//   "Зелень",
+//   "Приправы",
+// ];
+//Напиши скрипт, который для каждого элемента массива ingredients создаст отдельный li,
+//после чего вставит все li за одну операцию в список ul.ingredients.
+//Для создания DOM-узлов используй document.createElement().
+// const ul = document.querySelector("#ingredients");
+
+// function createMarkup(item) {
+//   const row = `
+//   <li class="item">${item}</li>
+//   `;
+//   return row;
+// }
+
+// function createList(array) {
+//   return array.map((arr) => createMarkup(arr)).join("");
+//   // return array.reduce((acc, arr) => (acc += createMarkup(arr)), " ");
+// }
+// const markup = createList(ingredients);
+
+// ul.insertAdjacentHTML("afterbegin", markup);
+
+// task 2 ======================
+//Напиши скрипт, который бы при потере фокуса на инпуте, проверял его содержимое на правильное количество символов.
+
+// const input = document.querySelector("#validation-input");
+
+// input.addEventListener("change", handleInputChange);
+
+// function handleInputChange(evt) {
+//   evt.preventDefault();
+//   if (input.classList.contains("invalid")) {
+//     input.classList.remove("invalid");
+//   } else if (input.classList.contains("valid")) {
+//     input.classList.remove("valid");
+//   }
+//   const value = evt.target.value.length;
+//   const attribute = Number(input.getAttribute("data-length"));
+//   if (value !== attribute) {
+//     input.classList.add("invalid");
+//   }
+//   input.classList.add("valid");
+// }
+
+// task 3
+
+//Напиши скрипт создания и очистки коллекции элементов.
+//Пользователь вводит количество элементов в input и нажимает кнопку Создать,
+// после чего рендерится коллекция. При нажатии на кнопку Очистить, коллекция
+//элементов очищается.
+
+//Создай функцию createBoxes(amount), которая принимает 1 параметр amount - число.
+// Функция создает столько div, сколько указано в amount и добавляет их в div#boxes.
+
+//Каждый созданный div:
+
+//Имеет случайный rgb цвет фона
+//Размеры самого первого div - 30px на 30px
+//Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
+//Создай функцию destroyBoxes(), которая очищает div#boxes.
+
+const createBtn = document.querySelector('button[data-action="render"]');
+const destroyBtn = document.querySelector('button[data-action="destroy"]');
+const inputValue = document.querySelector("#controls > input");
+const container = document.querySelector("#boxes");
+
+destroyBtn.addEventListener("click", handleDestroyBtnClick);
+createBtn.addEventListener("click", handleCreateBtnClick);
+//================ functions
+
+function createBoxes(amount) {
+  // const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  // div.style.backgroundColor = `#${randomColor}`;
+  const array = [];
+  let width = 30;
+  for (let i = 0; i < amount; i += 1) {
+    array.push(i);
+  }
+  const markup = array.reduce(
+    (acc, arr) =>
+      (acc += `<div class="div" style="background-color: #${Math.floor(
+        Math.random() * 16777215
+      ).toString(16)};width:${width}px; ";></div>`),
+    ""
+  );
+
+  return markup;
+}
+
+function handleDestroyBtnClick() {
+  container.innerHTML = "";
+  inputValue.value = "";
+}
+
+function handleCreateBtnClick() {
+  const input = Number(inputValue.value);
+  const markup = createBoxes(input);
+  container.insertAdjacentHTML("afterbegin", markup);
+}
+
+let z = 30;
+console.log(String((z += 10)));
+// DELEGATION
+const nav = document.querySelector(".js-nav");
+
+nav.addEventListener("click", handleClick);
+
+function handleClick(e) {
+  e.preventDefault();
+  // console.log(e.currentTarget);
+  if (e.target === e.currentTarget) {
+    return; //если кликнули по ul, выходим, так как мы работаем с лишками
+    //исключать родителя из события клика
+  }
+  const activeLink = e.currentTarget.querySelector(".active");
+  if (activeLink) {
+    activeLink.classList.remove("active");
+  }
+  e.target.classList.add("active");
+}
+
+//todos
+
+//model
+const todos = {
+  items: [],
+  add(text) {
+    const todo = {
+      id: Date.now(),
+      text,
+    };
+    this.items.push(todo);
+    return todo;
+  },
+  delete(id) {
+    this.items = this.items.filter((item) => item.id !== id);
+  },
+};
+
+//interface
+
+const refs = {
+  editor: document.querySelector(".js-editor"),
+  toDoList: document.querySelector(".js-todo-list"),
+};
+//лучше эти ссылки на узлы писать в одном объекте refs
+
+// const editor = document.querySelector(".js-editor");
+// const toDoList = document.querySelector(".js-todo-list");
+
+refs.editor.addEventListener("submit", handleEditorSubmit);
+refs.toDoList.addEventListener("click", handleDelBtnClick);
+
+function handleEditorSubmit(e) {
+  e.preventDefault();
+  const inputValue = e.currentTarget.elements.text.value;
+  const todo = todos.add(inputValue);
+  const todoMarkup = createTodoItem(todo);
+  appendTodoItem(refs.toDoList, todoMarkup);
+  e.currentTarget.reset();
+}
+
+//добавить кусок интерфейса- функция, кот будет сщздавать шаблон
+
+function createTodoItem(item) {
+  return `  <li class="todo-list__item" data-id="${item.id}">
+  <div class="todo">
+  <p class="todo-text">${item.text}</p>
+  <div class="todo-actions">
+    <button class="btn" type="button">Delete</button>
+  </div>
+</div>
+</li>`;
+}
+
+function appendTodoItem(parentRef, elem) {
+  parentRef.insertAdjacentHTML("beforeend", elem);
+}
+
+function handleDelBtnClick(e) {
+  if (e.target.nodeName !== "BUTTON") {
+    return;
+  }
+  const button = e.target;
+  const li = button.closest(".todo-list__item");
+  const id = Number(li.dataset.id);
+  todos.delete(id);
+  // refs.toDoList.removeChild(li);
+  li.remove(); // современный api
+}
+// Chatty events, throtling & debounce
+//некоторые ивенты слишком болтливые Chatty- встречаются слишком часто
+//если повесить слушателя на скрол - очень много раз будет вызываться его хэндл. Это плохо
+//Событие в виде скрола и инпута есть смысл притармаживать, чтобы колбэк выполнялся
+//один раз в пол секунды. И тутнужен trotling - торможение - библиотека ladash
+// sdn если не webpack - throttle.js- обычный файл js, где написана функция throttle
+
+// window.addEventListener("scroll", throtlle(onScroll,500)); // второй аргумент 500ms
+//trottle на местосвоего вызова вернет заторможенную функцию, кот будет вызывать
+//onScroll раз в 500ms
+function onScroll() {
+  console.log("yes");
+}
+//Чаще всего используется при скроле
+
+//        DEBOUNCE
+
+//это событие input - хочется, чтобы не каждая буква показывалась, а пользователь
+//наводил, наводил и когда остановился - делать фильтрацию и показывать, но при этом
+//не убирается крсор из инпута, событие blur ore onChange не происходит
+
+// document.querySelector(".js-deb").addEventListener("input", debounce(inputClick, 300));
+
+function inputClick() {
+  console.log("input event!");
+}
+// Нужно затормозить, throttle здесь не подойдет, так как мы не можем ограничить пользователя
+//кол-вом милисекунд. Лучше пока набирает- пусть набирает и как только остановился-
+// что-то вызвать. DEBOUNCE если фенкция не была вызвана за определенный промежуток времени-
+//то оно ее вызывает. Т.е. - событие происходит, и как только мы перестаем печатать-
+//DEBOUNCE вызывает функцию.После того, как юзер приостановил печать, он ждет 300 мили секунд
+//и только тогда вызывает
+
+//INTERSECTION OBSERVER - класс, который организует наблюдение
+//за вхождением элемента во вьюпорт
+
+const input = document.querySelector(".group");
+
+const options = {
+  threshold: 0.5, // когда пол эл-та влезет во вьюпорт - тригери, сколько % эл-та должно влезть во вьюпорт
+};
+
+const observer = new IntersectionObserver(onEntry, options); //{} - опции
+//после чего указываем обзерверу за чем нам наблюдать
+const sections = document.querySelectorAll("section");
+
+sections.forEach((section) => {
+  observer.observe(section);
+});
+//собрали все секции в документе и на каждую повесили обзервер
+//И теперь, когда секция будет входить во вьюпорт - будет выполняться
+//функция onEntry
+
+function onEntry(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      //если пересекает, то выведи эл-т, который сейчас пересекает
+      const sectionId = entry.target.getAttribute("id");
+      const currentActiveLink = input.querySelector("group-active");
+      if (currentActiveLink) {
+        currentActiveLink.classList.remove("group-active");
+      }
+      //на тот эл-т, у которого sectionId нужно его добавить
+      // const nextEctiveLink = input.querySelector(`a[href="#sectionId"]`);
+      //nextEctiveLink.classList.add("group-active");
+    }
+  });
+}
+//entries коллекция всех вхождений
+//это scroll-spy
+// polyfill - реализует новый функционал в старых браузерах, где этот функционал
+//не поддерживается
+
+// ЛЕНИВАЯ ЗАГРУЗКА ИЗОБРАЖЕНИЙ
+//загрузка имеджей, которых не видно - все тормозит
+//lazt-load - ленивая загрузка изображений- до тех пор, пока пользователь не прокрутил
+//до этого имеджа - его грузить не нужно
+//для каждого изображения нужен свой INTERSECTION OBSERVER - обзервить до тех пор,
+//пока картинка не вошла во вьюпорт, потом ее загрузить, потом уже плевать, обзервер нужно
+//снять
+
+const lazyLoad = (target) => {
+  const options = {
+    rootMargin: "50px 0px",
+    threshold: 0.01,
+  };
+  const newObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        const srcUrl = img.dataset.lazy; // dataset - отсекается data и берется lazy
+        img.setAttribute("src", srcUrl);
+        observer.disconnect();
+      }
+    });
+  }, options);
+  newObserver.observe(target); //без этого не будет работать,за чем наблюдать
+};
+const images = document.querySelectorAll(".portfolio img");
+
+images.forEach((image) => {
+  lazyLoad(image);
+});

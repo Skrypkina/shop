@@ -70,9 +70,7 @@
             <nav class="nav">
               <ul class="navigation">
                 <li class="navigation-item">
-                  <a href="" class="navigation-link current-page">
-                    Studio
-                  </a>
+                  <a href="" class="navigation-link current-page"> Studio </a>
                 </li>
                 <li class="navigation-item">
                   <a href="" target="_blank" class="navigation-link">
@@ -81,9 +79,7 @@
                 </li>
 
                 <li class="navigation-item">
-                  <a href="" class="navigation-link">
-                    Contacts
-                  </a>
+                  <a href="" class="navigation-link"> Contacts </a>
                 </li>
               </ul>
             </nav>
@@ -129,7 +125,7 @@
     </header>
     <!-- main -->
     <main>
-      <section class="portfolio">
+      <section class="portfolio" id="section">
         <div class="container">
           <h1 class="portfolio-title">Our portfolio</h1>
           <div role="group" class="group">
@@ -188,7 +184,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/texno (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt="website image"
                   height="294"
                   class="image"
@@ -204,7 +201,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/footboll (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt="volleyball players poster"
                   height="294"
                   class="image"
@@ -220,7 +218,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/seafood (1).jpg"
+                  src=""
+                  data-lazy="./images/bussness (1).jpg"
                   alt="seafood poster"
                   class="image"
                 />
@@ -235,7 +234,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/prime (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt=" headphones image"
                   class="image"
                 />
@@ -251,7 +251,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/boxes (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt="boxes image"
                   class="image"
                 />
@@ -266,7 +267,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/inspiration (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt="computer image"
                   class="image"
                 />
@@ -281,7 +283,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/edition (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt="book image"
                   class="image"
                 />
@@ -295,7 +298,12 @@
             </li>
             <li class="img-item">
               <div class="overlay">
-                <img src="./images/lab (1).jpg" alt="tag image" class="image" />
+                <img
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
+                  alt="tag image"
+                  class="image"
+                />
                 <p class="overlay-descr">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
                   cumque iure cupiditate praesentium cum rem, vitae dolores
@@ -307,7 +315,8 @@
             <li class="img-item">
               <div class="overlay">
                 <img
-                  src="./images/bussness (1).jpg"
+                  src=""
+                  data-lazy="./images/footboll (1).jpg"
                   alt="computer image"
                   class="image"
                 />
@@ -361,6 +370,64 @@
           <button class="button-up next" data-next>Вперед</button>
         </div>
       </div>
+      <!-- tasks -->
+      <ul id="ingredients"></ul>
+
+      <!-- task 2 -->
+      <input
+        type="text"
+        id="validation-input"
+        data-length="6"
+        placeholder="Введи 6 символов"
+      />
+      <!-- task 3 -->
+      <input id="font-size-control" type="range" />
+      <br />
+      <span id="text">Абракадабра!</span>
+      <!-- task 4 -->
+      <div id="controls">
+        <input type="number" min="0" max="100" step="1" />
+        <button type="button" data-action="render">Создать</button>
+        <button type="button" data-action="destroy">Очистить</button>
+      </div>
+
+      <div id="boxes"></div>
+      <!-- delegation -->
+
+      <ul class="nav js-nav">
+        <li class="nav-item">
+          <a href=""> home</a>
+        </li>
+        <li class="nav-item">
+          <a href="">blog</a>
+        </li>
+        <li class="nav-item">
+          <a href="">contacts</a>
+        </li>
+        <li class="nav-item">
+          <a href="">about</a>
+        </li>
+      </ul>
+      <!-- to do list -->
+      <h4>Form</h4>
+      <form action="" class="editor js-editor">
+        <input type="text" class="editor-input" name="text" />
+        <!-- <batton class="editor-button" type="submit">Save</batton> -->
+        <input type="submit" value="Submit" class="editor-submit" />
+      </form>
+      <h4>List</h4>
+      <ul class="todo-list js-todo-list">
+        <!-- <li class="todo-list__item">
+          <div class="todo">
+            <p class="todo-text"></p>
+            <div class="todo-actions">
+              <button class="btn" type="button">Delete</button>
+            </div>
+          </div>
+        </li> -->
+      </ul>
+      <!--  Debaunce-->
+      <input type="text" class="js-deb" />
     </main>
     <div id="box1"></div>
     <div id="circle"></div>
@@ -486,47 +553,5 @@
         </div>
       </div>
     </footer>
-    <!-- JS Слайдера -->
-    <!-- <script>
-      /* Индекс слайда по умолчанию */
-      var slideIndex = 1;
-      showSlides(slideIndex);
-
-      /* Функция увеличивает индекс на 1, показывает следующй слайд*/
-      function plusSlide() {
-        showSlides((slideIndex += 1));
-      }
-
-      /* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
-      function minusSlide() {
-        showSlides((slideIndex -= 1));
-      }
-
-      /* Устанавливает текущий слайд */
-      function currentSlide(n) {
-        showSlides((slideIndex = n));
-      }
-
-      /* Основная функция слайдера */
-      function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("slider-item");
-        var dots = document.getElementsByClassName("slider-dots_item");
-        if (n > slides.length) {
-          slideIndex = 1;
-        }
-        if (n < 1) {
-          slideIndex = slides.length;
-        }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
-    </script> -->
   </body>
 </html>
