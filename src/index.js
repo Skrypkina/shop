@@ -1787,11 +1787,13 @@ function onScroll() {
 //наводил, наводил и когда остановился - делать фильтрацию и показывать, но при этом
 //не убирается крсор из инпута, событие blur ore onChange не происходит
 
-// document.querySelector(".js-deb").addEventListener("input", debounce(inputClick, 300));
+// document
+//   .querySelector(".js-deb")
+//   .addEventListener("input", debounce(inputClick, 300));
 
-function inputClick() {
-  console.log("input event!");
-}
+// function inputClick() {
+//   console.log("input event!");
+// }
 // Нужно затормозить, throttle здесь не подойдет, так как мы не можем ограничить пользователя
 //кол-вом милисекунд. Лучше пока набирает- пусть набирает и как только остановился-
 // что-то вызвать. DEBOUNCE если фенкция не была вызвана за определенный промежуток времени-
@@ -1869,3 +1871,235 @@ const images = document.querySelectorAll(".portfolio img");
 images.forEach((image) => {
   lazyLoad(image);
 });
+
+// таймеры
+// function padStart() and padEnd()
+//'1'.padStart(2, '0') //'01';
+//'1'.padStart(5, '0') //'00001';
+
+// промисы
+
+// создаем horse races
+
+const randomIntegerFromInterval = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const horse = {
+  name: "Mango",
+  racetime: randomIntegerFromInterval(2000, 3000),
+};
+
+const horses = ["Mango", "Poly", "Ayaks", "Chelsy", "Kiwi"].map((name) => ({
+  name,
+  racetime: randomIntegerFromInterval(2000, 3000),
+}));
+
+console.table(horses);
+const promises = horses.map((horse) => race(horse));
+
+// const race = (horse, onFinished) => {
+//   setTimeout(() => {
+//     onFinished(horse);
+//   }, horse.racetime);
+// };
+
+// race(horse, notifyWhenFinished); // но это зависимость от внешних функций
+//желательно, что когда лошадь добежит, нам вернулся промис
+
+//поэтому
+
+function race(horse) {
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      const crashed = Math.random > 0.5;
+      if (crashed) {
+        reject({ horse, errorMessage: "crashed" });
+      } else {
+        resolve(horse); // можно передать только 1 значение, много нельзя
+        //если надо много - передавать объект
+      }
+    }, horse.racetime)
+  );
+} // это независимое
+
+// race(horse)
+//   .then((horse) => notifyWhenFinished(horse))
+//   // .then((horse) => console.log(horse))
+//   .catch((error) => {
+//     console.log(error);
+//   }); // код их связывает
+
+function notifyWhenFinished({ name, racetime }) {
+  console.log(`${name} is finished in ${racetime}`);
+} // это независимое
+
+//чтобы запустить массив лошадей
+notifyWhenRaceFinishes(promises); //получаем массив из промисов
+notifyWinner(promises);
+
+function notifyWhenRaceFinishes(horses) {
+  // const promises = horses.map((horse) => race(horse));
+  Promise.all(horses)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => console.error(error));
+}
+
+function notifyWinner(horses) {
+  Promise.race(horses).then((winner) => {
+    console.log(`The winner is ${winner.name}`);
+  });
+}
+//в синхронном коде можно сделать промис, который резолвнится мгновенно,
+//чтобы не вносить изменения в модель и работать с кодом дальше
+
+const cart = {
+  // remove(id) {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       this.items = this.items.filter((item) => item !== id);
+  //       resolve(id)
+  //     }, 300);
+  //   });
+  // },
+  update(id) {
+    return Promise.resolve(id); //статический метод, кот позволяет взять синхронную функцию
+    //и вернуть промис и позволяет внешнему коду работать с результатом
+    //будет выполнено асинхронно, но мгновенно, после всего синхронного кода
+  },
+};
+
+cart.update(1).then((id) => updateUIAfterUpdate(id));
+
+function updateUIAfterUpdate(id) {
+  return id + 1;
+}
+
+//window.requestAnimationFrame() - use для анимации, для инлайн через js
+// settimeout() & setinterval() не используются для анимации
+
+//есть какая-то функция для анимации
+
+// const animateBar = () => {
+//   BarProp.style.width += 5;// width не анимируется, это для примера
+// requestAnimationFrame(animateBar)
+// };
+//браузер будет эту функцию animateBar будет вызывать каждые 16 миллисекунд
+//но потом нужно отменить, так как будет рисовать до бесконечности, поэтому
+//можно поставить проверку
+
+// const animateBar = () => {
+//   BarProp.style.width += 5;// width не анимируется, это для примера
+// if(width < 100%) {
+//   requestAnimationFrame(animateBar)
+// }
+// };
+
+//геолокация
+
+// console.log(window.navigator);// объект геолокации
+
+const getcurrentPosition = () => {
+  const options = {
+    timeout: 5000,
+  };
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  });
+};
+
+getcurrentPosition()
+  .then((location) => {
+    console.log(location);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+//пагинация - возможность бэка отдать за 1 запрос часть данных
+//это контролтируется параметрами запроса
+//api.com/articles?q=cat?per_page=20&page=1 - api смотреть в доках
+//нужно создать папку services/news-service.js - делаем запрос на бэк
+
+/*
+const baseUrl = "...."
+exort default {
+  page: 1,
+  query: '',
+  fetchArticles() {
+    const options = {
+      headers: {
+        Autorization: '546576878980'
+      },
+      
+  const requestParams = `?q=${this.query}&page=${this.page}$pageSize=15`
+
+   return fetch(baseUrl+requestParams, options).then(response => response.JSON()).then(data=> {
+     this.incrementPage();
+    return  data.articles;
+    
+    })
+   возвращает промис
+  },
+  get searchQuery() {
+        return this.query;
+      },
+          set searchQuery(string) {
+      this.searchQuery = string;
+      }
+    }
+  incrementPage() {
+    this.page +=1;
+  },
+  resetPage() {
+    this.page = 1;
+  }
+}
+
+//в другом модуле выбираем инпут квериселектором, добавляем ивент листенер и 
+пишем функцию handleSubmit,импортируем наш запрос как newsService
+ 
+handleSubmit(e) {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const input = form.elements.(name of input);
+  const inputValue = input.value;
+  clearList();- чтобы очищался список при новом запросе
+    newsService.resetPage();-чтобы при втором запросе данные загружались с 1 страницы
+  newsService.searchQuery = inputValue;
+  newsService.fetchArticles().then(data => {
+    insertListItems(data) - можно написать .then(insertListItems)
+  }).catch(error=> {console.worn(error)});
+  input.value="";
+}
+
+
+функция, добавляющая заметки в ДОМ
+function insertListItems(items) {
+  articleListItemsTemplate(items) - заимпортированный файл handlebars
+   const markup = buildListItemsArticles(items)
+  refs.articlesList.insertAjacentHTML('beforeend', markup);
+}
+
+В конце кнопка Load more
+есть 3 стратегии догрузки контента
+- бесконечный скрол - через обзервер, но есть плагины
+-нажать на кнопку
+
+хэндлер, который вешается на кнопку
+
+function loadMoreBtnHandler() {
+newsService.fetchArticles().then(insertListItems).catch(error=> {console.worn(error)});
+}
+
+очищать список при смене query 
+
+function clearList() {
+  refs.articleList.innerHtml ='';
+}
+ */
+
+// rel ="noopener norefferer" вместе с target="_blank" в тэге а - вкладка,
+//новая, которую ты открыл ничего не знает про ту, с которой ты ее открыл- против хакеров
